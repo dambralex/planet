@@ -1,44 +1,56 @@
+<!DOCTYPE html>
 
-<script src = "js/three.min.js"
+<head>
+  <title>Un Canard</title>
+  <script src="js/three.min.js"></script>
+  <script>
+    var camera, scene, renderer;
+    var geometry, material, mesh;
 
-<script>
-var camera, scene, renderer;
-var geometry, material, mesh;
+    function init() {
 
-init();
-animate();
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
 
-function init() {
+      camera.position.z = 1000;
 
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-    camera.position.z = 1000;
+      scene = new THREE.Scene();
 
-    scene = new THREE.Scene();
-
-    geometry = new THREE.BoxGeometry(200, 200, 200);
-    material = new THREE.MeshBasicMaterial({
-        color: 0xff0000,
+      geometry = new THREE.BoxGeometry(200, 200, 200);
+      material = new THREE.MeshBasicMaterial({
+        color: 0xEFD000,
         wireframe: true
-    });
+      });
 
-    mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+      mesh = new THREE.Mesh(geometry, material);
+      scene.add(mesh);
 
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
 
-    document.body.appendChild(renderer.domElement);
+      document.body.appendChild(renderer.domElement);
+      renderer.render(scene, camera);
 
-}
+    }
 
-function animate() {
+    function animate() {
 
-    requestAnimationFrame(animate);
+      //requestAnimationFrame(animate);
 
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
+      mesh.rotation.x += 0.01;
+      mesh.rotation.y += 0.02;
 
-    renderer.render(scene, camera);
+      renderer.render(scene, camera);
 
-}
-</script>
+    }
+  </script>
+</head>
+
+<html>
+
+<body onload = "init()">
+
+  <button onclick = "animate()"> coucou </button>
+  <!--<canvas width="1362" height="662" style="width: 1362px; height: 662px;"></canvas>-->
+</body>
+
+</html>
