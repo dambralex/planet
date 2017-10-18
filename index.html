@@ -6,6 +6,7 @@
   <script>
     var camera, scene, renderer;
     var geometry, material, mesh;
+    var geometry2, material2, sphere;
 
     function init() {
 
@@ -24,6 +25,11 @@
       mesh = new THREE.Mesh(geometry, material);
       scene.add(mesh);
 
+      var geometry2 = new THREE.SphereGeometry( 1000, 32, 32 );
+      var material2 = new THREE.MeshBasicMaterial( {color: 0x017EFD, wireframe: true} );
+      var sphere = new THREE.Mesh( geometry2, material2 );
+scene.add( sphere );
+
       renderer = new THREE.WebGLRenderer();
       renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -32,14 +38,14 @@
 
     }
 
-    function animate() {
+    function animat() {
 
-      //requestAnimationFrame(animate);
+      requestAnimationFrame();
 
-      mesh.rotation.x += 0.01;
-      mesh.rotation.y += 0.02;
+      sphere.rotation.y += 0.1;
 
       renderer.render(scene, camera);
+
 
     }
   </script>
@@ -49,7 +55,7 @@
 
 <body onload = "init()">
 
-  <button onclick = "animate()"> coucou </button>
+  <button onclick = "animat()"> coucou </button>
   <!--<canvas width="1362" height="662" style="width: 1362px; height: 662px;"></canvas>-->
 </body>
 
