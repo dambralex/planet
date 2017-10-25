@@ -8,6 +8,8 @@
     var geometry, material, mesh;
     var geometry2, material2, sphere;
 
+    var flag = 0;
+
     function init() {
 
       camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
@@ -19,7 +21,7 @@
       geometry = new THREE.BoxGeometry(200, 200, 200);
       material = new THREE.MeshBasicMaterial({
         color: 0xEFD000,
-        wireframe: true
+        wireframe: false
       });
 
       mesh = new THREE.Mesh(geometry, material);
@@ -27,7 +29,7 @@
 
       var geometry2 = new THREE.SphereGeometry( 1000, 32, 32 );
       var material2 = new THREE.MeshBasicMaterial( {color: 0x017EFD, wireframe: true} );
-      var sphere = new THREE.Mesh( geometry2, material2 );
+      sphere = new THREE.Mesh( geometry2, material2 );
 scene.add( sphere );
 
       renderer = new THREE.WebGLRenderer();
@@ -40,9 +42,12 @@ scene.add( sphere );
 
     function animat() {
 
-      requestAnimationFrame();
+      requestAnimationFrame(()=>{});
 
       sphere.rotation.y += 0.1;
+
+      console.log (sphere);
+      console.log (renderer);
 
       renderer.render(scene, camera);
 
@@ -56,7 +61,7 @@ scene.add( sphere );
 <body onload = "init()">
 
   <button onclick = "animat()"> coucou </button>
-  <!--<canvas width="1362" height="662" style="width: 1362px; height: 662px;"></canvas>-->
+
 </body>
 
 </html>
