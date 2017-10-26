@@ -22,8 +22,8 @@ function init() {
   
   scene.add(mesh);
 
-  var geometry2 = new THREE.SphereGeometry( 1000, 32, 32 );
-  var material2 = new THREE.MeshBasicMaterial( {color: 0x017EFD, wireframe: true} );
+  geometry2 = new THREE.SphereGeometry( 1000, 32, 32 );
+  material2 = new THREE.MeshBasicMaterial( {color: 0x017EFD, wireframe: true} );
   sphere = new THREE.Mesh( geometry2, material2 );
   
   scene.add( sphere );
